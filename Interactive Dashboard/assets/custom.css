@@ -1,0 +1,52 @@
+
+
+.Select-value-label {
+    color: white !important;
+   
+}
+
+
+.Select-value {
+    border-color: #2358a6 !important;
+   
+}
+
+.VirtualizedSelectOption {
+    background-color: #2358a6;
+    color: white;
+    font-size:1.6vh;
+ }
+ 
+
+
+.nav-pills .nav-link.active {
+    color: #2358a6;
+    background-color: white;
+    font :{ color : white} ;
+
+}
+
+.nav-link {
+    color: white;
+    background-color: #2358a6;
+    font :{ color : white} ;
+
+}
+
+
+.page-link:hover {
+  background-color: white;
+      color:#2358a6 ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
