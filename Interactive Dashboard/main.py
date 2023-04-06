@@ -1,9 +1,3 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -13,7 +7,6 @@ import pandas as pd
 import dash_table
 from dash.exceptions import PreventUpdate
 from flask_sqlalchemy import SQLAlchemy
-
 from flask import Flask
 import os
 from sqlalchemy.types import String
@@ -147,41 +140,7 @@ Grunnkrets = ['3012401 Tøyen Rode 1', '3012408 Tøyen Rode 8', '3012409 Tøyen 
               ]
 
 
-
-
-
-
-
-
-
-
-
-#dff['color']='blue'
-#dff.to_csv('Params.csv')
-#df=dff[['Unnamed: 0','Trips',"OrigCode","DestCode","Origin","Destination",
-                            #                      "OriPop19","DestEmp19","Ourban","Durban","Inc19_x","Inc19_y","Dist"]]
-
-#divs=['Gamle Oslo','Sagene Oslo']
-#df['color']='blue'
-#indics=df[ df['Destination'].isin(divs)]['color'].index
-#df['color'].loc[indics]='red'
-#df.to_csv('df.csv')
-#df.to_csv('df.csv')
-#print(df[df['Origin']!=df['Destination']])
-#filt_df = df[(df['Origin'] == 'Gamle Oslo') | (df['Destination'] == 'Gamle Oslo') ]
-#print(filt_df)
-#df.to_csv('dff.csv')
 input_values = []
-
-#print(filt_df['OriPop19'])
-#print(list(filt_df.iloc[17].values))
-
-
-
-
-#text=14px + (26 - 14) * ((100vw - 300px) / (1600 - 300))
-#font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));
-
 text_font_size='1.7vh'
 navbar_font_size='2vh'
 header_font_size='2vh'
@@ -310,11 +269,6 @@ db_map_div2=dbc.Col([ map_header2,map_div2] ,
         xs=dict(size=10,offset=1), sm=dict(size=10,offset=1),
         md=dict(size=8,offset=1), lg=dict(size=5,offset=0), xl=dict(size=5,offset=0))
 
-
-
-
-
-##1e90ff
 db_map_header1=dbc.Col([map_header1],
                              xs=dict(size=10, offset=1), sm=dict(size=10, offset=1),
                              md=dict(size=5, offset=1), lg=dict(size=5, offset=1), xl=dict(size=5, offset=1)
@@ -329,8 +283,6 @@ simulation_type_text=html.Div(html.H1('Type of Simulation For Visualization: ',
                            style=dict(fontSize=text_font_size,fontWeight='bold',color='black',marginTop='1vh')),
                            style=dict(display='inline-block'))
 
-
-
 simulation_type_menu=  dcc.Dropdown(
         id='sim_dropdown',
         options=[
@@ -339,19 +291,14 @@ simulation_type_menu=  dcc.Dropdown(
         value='Flows' , style=dict(color='black',fontWeight='bold',textAlign='center',
                                      width='20vh',backgroundColor='#2358a6',border='1px solid #2358a6')
     )
-# height='50px' ,
-# width='12%', marginLeft='1520px' marginTop='-400px' fontSize=26
-#display='inline-block',  border='2px solid #082255',
 
 simulation_type_menu_div= html.Div([simulation_type_menu],
                           style=dict(fontSize=text_font_size,
                                       marginLeft='1vh',marginBottom='',display='inline-block'))
 
-
 model_type_text=html.Div(html.H1('Transport Model Used For Simulation:',
                            style=dict(fontSize=text_font_size,fontWeight='bold',color='black',marginTop='1vh')),
                          style=dict(display='inline-block',marginLeft='3vh'))
-
 
 model_type_menu=  dcc.Dropdown(
         id='model_dropdown',
@@ -370,7 +317,6 @@ model_type_menu_div= html.Div([model_type_menu],
 city_text=html.Div(html.H1('City Subdivisons:',
                            style=dict(fontSize=text_font_size,fontWeight='bold',color='black',marginTop='1vh')),
                          style=dict(display='inline-block',marginLeft='3vh'))
-
 
 city_menu=  dcc.Dropdown(
         id='city_dropdown',
@@ -419,8 +365,6 @@ db_dropdowns=dbc.Col(html.Div([simulation_type_text,simulation_type_menu_div,map
                              md=dict(size=10, offset=1), lg=dict(size=10, offset=1), xl=dict(size=10, offset=1)
                              )
 
-
-
 scenario_header=html.H1('Oslo City Transport Simulation',
                            style=dict(fontSize=header_font_size,fontWeight='bold',color='black'))
 
@@ -429,7 +373,7 @@ db_scenario_header=dbc.Col([scenario_header],
                              xs=dict(size=10, offset=1), sm=dict(size=10, offset=1),
                              md=dict(size=8, offset=1), lg=dict(size=8, offset=1), xl=dict(size=8, offset=1)
                              )
-#'backgroundColor':'#0d6efd'
+
 navigation_header2=dbc.Tabs(
             [
                 dbc.Tab(label="Scenario Selection", tab_id="Parameters",label_style={"color": "#0d6efd",'fontSize':navbar_font_size},active_tab_style={'border':'4px solid black','color':'#0d6efd'}
@@ -444,16 +388,10 @@ navigation_header2=dbc.Tabs(
             active_tab="Parameters",
         )
 
-
-
-
-
-
 db_navigation_header2=dbc.Col([navigation_header2],
                              xs=dict(size=12, offset=0), sm=dict(size=12, offset=0),
                              md=dict(size=10, offset=1), lg=dict(size=10, offset=1), xl=dict(size=10, offset=1)
                              )
-
 
 scenario_selection_text=html.Div(html.H1('Select Parameter for Simulation: ',
                            style=dict(fontSize=text_font_size,fontWeight='bold',color='black',marginTop='1vh')),
@@ -463,11 +401,6 @@ scenario_selection_text=html.Div(html.H1('Select Parameter for Simulation: ',
 subdivision_text=html.Div(html.H1('Select the Subdivision: ',
                            style=dict(fontSize=text_font_size,fontWeight='bold',color='black',marginTop='1vh',marginLeft='3vh')),
                            style=dict(display='inline-block'))
-
-
-#{ 'label':Grunnkrets_dist ,'value':Grunnkrets_dist } for Grunnkrets_dist in Grunnkrets
-#display='inline-block',border='2px solid #082255'
-
 
 multiple_param=html.Div([dbc.Button("Add Parameter(+)", color="primary", size='lg', n_clicks=0,id="multiple_param"
                             ,style=dict(fontSize=text_font_size,width='20vh')
@@ -589,9 +522,6 @@ app.layout=html.Div([ dbc.Row([html.Div([ #logo_img,
                       dcc.Store(id='parametrs_info', data=pd.DataFrame().to_dict('records')),
                       dcc.Store(id='folium_df', data=pd.DataFrame().to_dict('records')),
                       dcc.Store(id='full_trips_df', data=pd.DataFrame().to_dict('records'))
-
-
-
 ])
 
 @app.callback(Output('layout','children'),
@@ -798,8 +728,6 @@ def analyze(clicks,subdivision,parameter,existing_input,revised_input,variation)
                     dff.loc[index, 'sim_Durban'] = row['Durban']
                 input_values.append(list(row.values))
                 indices.append(index)
-
-
         else:
             return (dash.no_update,dash.no_update,dash.no_update,dash.no_update,dash.no_update)
 
@@ -891,9 +819,6 @@ def update_existing_input(n_clicks,subdivision,parameter):
 
     else:
         pass
-
-
-
 
 
 
@@ -993,8 +918,6 @@ def add_parameter(n_clicks,n_clicks2,container_content):
 
             return container_content
 
-
-
 @app.callback(Output('map1_div', 'children'),
              [Input('ok_button', 'n_clicks')],[State('sim_dropdown','value'),State('chosen_map','value')]
      ,prevent_initial_call=True
@@ -1011,13 +934,11 @@ def update_map1(clicks,type,chosen_map):
               style={'height': '60vh'}, figure=Functions.create_combined_map(df,[])
               )
 
-
     elif type == 'Network':
         
         return html.Iframe(srcDoc = open('map.html', 'r').read()
            ,style=dict(width='87vh',height='60vh')
             )
-
 
 @app.callback(Output('map2_div', 'children'),
              [Input('trips_df','data'),Input('ok_button', 'n_clicks')],
@@ -1113,10 +1034,6 @@ def map2_style(clicks,fig2,chosen_map,style):
         return dash.no_update
     fig2['layout']['mapbox']['style']=style
     return fig2
-
-
-
-
 
 
 if __name__ == '__main__':
