@@ -14,7 +14,6 @@ def create_line_map1(df):
                                                                                                   df['Trips'][ind],
                                                                                                   df['OriPop19'][ind]))
     df['hover'] = hov_text
-
     fig = go.Figure()
 
     name_arr = []
@@ -140,8 +139,7 @@ def create_combined_map(df,divisions):
             lat=lats,
             mode='lines',
             marker={'color': 'rgb(0,0,255)', 'size': 10, 'allowoverlap': True,'opacity':0.1,},
-           # unselected={'marker': {'opacity': 1}},
-           # selected={'marker': {'opacity': 0.5, 'size': 15}},
+
             hoverinfo='skip',
          #   hovertext=['Subdivision : {}<br>Population : {}'.format(df['Origin'][i], df['OriPop19'][i]),
               #         'Subdivision : {}<br>Population : {}'.format(df['Destination'][i], df['OriPop19'][i])],
