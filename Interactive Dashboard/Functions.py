@@ -1,9 +1,9 @@
 import pandas as pd
 import plotly.graph_objects as go
 import numpy as np
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-from sklearn.pipeline import make_pipeline
+
+
+# only last two functions are used ( create_combined_map , create_params_scatter ) the others are left just for reference
 
 def create_line_map1(df):
     hov_text = []
@@ -14,6 +14,7 @@ def create_line_map1(df):
                                                                                                   df['Trips'][ind],
                                                                                                   df['OriPop19'][ind]))
     df['hover'] = hov_text
+
     fig = go.Figure()
 
     name_arr = []
@@ -120,7 +121,18 @@ def create_size_map1(df):
                        clickmode='event+select', hovermode='closest')
     return fig2
 
+
+
+
+
+
+# please check these two links and video bellow that illustrate every thing about the parts i used bellow in the plotly map
+# https://plotly.com/python/lines-on-mapbox/
+# https://plotly.com/python/scattermapbox/
+# https://www.youtube.com/watch?v=7R7VMSLwooo
+
 def create_combined_map(df,divisions):
+
     lons = []
     lats = []
     df2=df[df['Origin']!=df['Destination']]
@@ -139,7 +151,8 @@ def create_combined_map(df,divisions):
             lat=lats,
             mode='lines',
             marker={'color': 'rgb(0,0,255)', 'size': 10, 'allowoverlap': True,'opacity':0.1,},
-
+           # unselected={'marker': {'opacity': 1}},
+           # selected={'marker': {'opacity': 0.5, 'size': 15}},
             hoverinfo='skip',
          #   hovertext=['Subdivision : {}<br>Population : {}'.format(df['Origin'][i], df['OriPop19'][i]),
               #         'Subdivision : {}<br>Population : {}'.format(df['Destination'][i], df['OriPop19'][i])],
@@ -207,6 +220,9 @@ def create_combined_map(df,divisions):
 
     return fig
 
+
+# this function creates scatter plot that depends on the parameter and day chosen in dropdowns menues
+
 def create_params_scatter(df,param,day):
     df['Simulated_Trips'] = df['Simulated_Trips'].astype('int64')
     df=df[ df['Day']==day ]
@@ -219,7 +235,7 @@ def create_params_scatter(df,param,day):
     df['hover'] = hov_text
     xaxis=df['{}'.format(param)]
     text=df['hover']
-    if 'sim_{}'.format(param ) in df.columns:
+    if 'sim_{}'.format(param ) in df.columns: # if the parameter chosen has modified values column in dataframe use it for simulated trips values and hover info
         xaxis=df['sim_{}'.format(param ) ]
         hov_text2=[]
         for ind in df.index:
@@ -229,21 +245,7 @@ def create_params_scatter(df,param,day):
                 df['sim_{}'.format(param )][ind], df['Trips'][ind], df['Simulated_Trips'][ind]))
         text=hov_text2
 
-    x1 = df[param].values.reshape(-1, 1)
-    y1 = df['Trips']
-    poly_f1 = PolynomialFeatures(1)
-    x_poly1 = poly_f1.fit_transform(x1)
-    lin_reg1 = LinearRegression()
-    lin_reg1.fit(x_poly1, y1)
-    df['model1'] = lin_reg1.predict(x_poly1)
 
-    x2 = xaxis.values.reshape(-1, 1)
-    y2 = df['Simulated_Trips']
-    poly_f2 = PolynomialFeatures(1)
-    x_poly2 = poly_f2.fit_transform(x2)
-    lin_reg2 = LinearRegression()
-    lin_reg2.fit(x_poly2, y2)
-    df['model2'] = lin_reg2.predict(x_poly2)
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=xaxis, y=df['Simulated_Trips'], mode='markers', name='Simulated Trips',
@@ -253,12 +255,11 @@ def create_params_scatter(df,param,day):
     fig.add_trace(go.Scatter(x=df[param], y=df['Trips'], mode='markers', name='Actual Trips', marker_color='#0097A9',
                              hoverinfo='text', hovertext=df['hover']))
 
-    fig.add_trace(go.Scatter(x=xaxis, y=df['model2'], mode='lines', showlegend=False, marker_color='lightsalmon'))
-    fig.add_trace(go.Scatter(x=df[param], y=df['model1'], mode='lines', showlegend=False, marker_color='#0097A9'))
+
 
     fig.update_layout(
-        go.Layout(title='Parameter vs actual and simulated trips of {}'.format(day), xaxis_title='Parameter', yaxis_title='Number of Trips',
-                  font=dict(size=14, family='bold'), template='ggplot2', hoverlabel=dict(
-                font_size=16, font_family="Rockwell"
-            )))
+        go.Layout(title='<b>{} Parameter vs actual and simulated trips of {}<b>'.format(param,day), xaxis_title='<b>{} Parameter<b>'.format(param), yaxis_title='<b>Number of Trips<b>',
+                  font=dict(size=14), template='ggplot2', hoverlabel=dict(
+                font_size=16 #, font_family="Rockwell"
+            ),  margin=dict(l=0, r=0, t=40, b=0) ))
     return fig
