@@ -6,7 +6,7 @@ from dash.dependencies import Input,Output,State,MATCH,ALL
 import pandas as pd
 
 layout=html.Div(
-                     # you can write about us details here
+                     # About us details here
 
 
 
