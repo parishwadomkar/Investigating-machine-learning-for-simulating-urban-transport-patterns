@@ -4,7 +4,7 @@ A Comparative analysis for Machine learning vs Traditional Gravity Model
 This repository contains the code for a research paper on a comprehensive transport model for trip predictions. The research investigates the data requirements for trips at the city level with considerable diversity and compares simulations based on SIM and Machine Learning models.
 
 <h3>Research Description</h3>
-The full research paper can be found here. The research focuses on developing a machine learning model for predicting trip patterns in urban areas, based on various factors such as time of day, day of the week, weather conditions, and more. The model uses data from trip logs provided by Telia company, which has been anonymized to protect privacy.
+The full research paper can be found here[ResearchPublication](https://www.sciencedirect.com/science/article/pii/S2772586323000175). The research focuses on developing a machine learning model for predicting trip patterns in urban areas, based on various factors such as time of day, day of the week, weather conditions, and more. The model uses data from trip logs provided by Telia company, which has been anonymized to protect privacy.
 
 The research also includes network analysis to calculate the shortest distance between all urban districts, which is used for further analysis in the spatial interaction model (SIM) as well as the machine learning model for the parameter calculations of cost of transport. The spatial interaction model is developed based on Wilson's ideology of Gravity theory.
 
