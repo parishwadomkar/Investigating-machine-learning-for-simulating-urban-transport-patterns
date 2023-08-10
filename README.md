@@ -28,7 +28,7 @@ The machine learning model is deployed in the backend over IBM Watson. The deplo
 It is possible to develop the model by providing the ability to upload the parameters and invoke the road network over OSM or Mapbox GL JS (for the faster and more accurate analytical ability of cost of transport, including the waiting times). Using GPU (TensorFlow) would optimize the model execution time further when we use real-time data, depending on the matrix size. The **SHAP analysis** for the XGBoost regression model is also included here.
 
 <h3>Usage</h3>
-To use the code, you must install Python 3 and the required libraries. You can run the simulations by executing the simulation.py file, and the visualization code is available in the visualization.py file.
+To use the code, you must install Python 3 and the required libraries given in the requirements file.
 
 <h3>Contribution</h3>
 Contributions to the code are welcome. If you have any questions or suggestions, please open an issue in the repository.
