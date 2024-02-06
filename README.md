@@ -1,5 +1,6 @@
 # Investigating-machine-learning-for-simulating-urban-transport-patterns
 Comparative analysis for Machine Learning vs Traditional Gravity Model
+[![DOI](https://zenodo.org/badge/624100189.svg)](https://zenodo.org/doi/10.5281/zenodo.10625877)
 
 This repository contains the code for a research paper on a comprehensive transport model for trip predictions. The research investigates the data requirements for trips at the city level with considerable diversity and compares simulations based on SIM and Machine Learning models.
 
